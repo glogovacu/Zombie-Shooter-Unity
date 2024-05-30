@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b5cbff6ae6fa4894d886ecd7c40dd40b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - healthBar: {instanceID: 0}
+  - gameOverCanvas: {instanceID: 0}
+  - music: {fileID: 8300000, guid: e8223e27612fb4a68a77694a4012fbad, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
