@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private Gun gun;
     public TMP_Text ScoreResetText;
-    public WeaponSwitching wepSw;
     public TMP_Text ScoreText;
     public TMP_Text CreditText;
     public TMP_Text DamageText;
@@ -33,8 +32,6 @@ public class UIManager : MonoBehaviour
     //ovo je funkciaj u updejtu koja updejtuje nesto konstanto da bi se videlo
     private void UpdateAmmo()
     {
-        _ammoText.text = gun.gunData.currentAmmo.ToString() + "/" + gun.gunData.magSize.ToString();
-        _healthText.text = healthBar.health.ToString();
     }
     //Funkcija koja se poziva za skore i kredit
     public void AddScore(float newScore)
@@ -127,8 +124,6 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        //dinamicjki dodajemo gun
-        gun = wepSw.weapons[wepSw.selectedWeapon].GetComponent<Gun>();
         //kad imamo vise od 2000 scora zombiji su jaci duplo
         if(score > 2000)
         {
