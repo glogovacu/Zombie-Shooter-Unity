@@ -3494,6 +3494,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920846849}
   m_CullTransparentMesh: 1
+--- !u!1 &1001516431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001516432}
+  m_Layer: 6
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001516432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001516431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.712, y: -0.015, z: 2.345}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1131999645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1028513131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,6 +3736,7 @@ GameObject:
   - component: {fileID: 1131999646}
   - component: {fileID: 1131999651}
   - component: {fileID: 1131999650}
+  - component: {fileID: 1131999652}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -3728,6 +3760,7 @@ Transform:
   - {fileID: 1693658846067435749}
   - {fileID: 613751816}
   - {fileID: 1659409693}
+  - {fileID: 1001516432}
   m_Father: {fileID: 8345070699414287370}
   m_LocalEulerAnglesHint: {x: 0, y: -12.7, z: 0}
 --- !u!136 &1131999646
@@ -3826,7 +3859,19 @@ MonoBehaviour:
     m_ActionId: ae4ffdab-27a7-43f7-912b-92560cd15fcb
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1131999652}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 132c8d4e-1311-4567-bdd7-68cfb2243b4e
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -3888,6 +3933,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _cameraTransform: {fileID: 8944336656349189700}
+--- !u!114 &1131999652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131999644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c70a4b5e39dcc4cb95362135558c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: 7425516166194610427, guid: 6f1082af0317af74d890015a284b5ffb, type: 3}
+  _bulletSpawnTransform: {fileID: 1001516432}
+  _shootingForce: 20
 --- !u!1 &1133966166
 GameObject:
   m_ObjectHideFlags: 0
