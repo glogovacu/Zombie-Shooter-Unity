@@ -6,17 +6,15 @@ public class WeaponSwitching : MonoBehaviour
 {
     //menjanje weapona logika
     [SerializeField] public Transform[] weapons;
-    [SerializeField] private KeyCode[] keys;
-    [SerializeField] private float switchTime;
-    [SerializeField] public Gun gun;
-    private UIManager uIManager;
-    public int selectedWeapon;
+    [SerializeField] private KeyCode[] _keys;
+    [SerializeField] private float _switchTime;
+    [SerializeField] private int _selectedWeaponId = 0;
     private float timeSinceLastSwitch = 0f;
     private void Start()
     {
         //postavlja koliko weapona imamo
         SetWeapons();
-        Select(selectedWeapon);
+        Select(_selectedWeaponId);
         timeSinceLastSwitch = 0f;
 
     }
@@ -28,20 +26,19 @@ public class WeaponSwitching : MonoBehaviour
             weapons[i] = transform.GetChild(i);
 
         }
-        if(keys== null) keys = new KeyCode[weapons.Length];
+        if(_keys== null) _keys = new KeyCode[weapons.Length];
     }
     private void Update()
     {
-        gun = weapons[selectedWeapon].GetComponent<Gun>();
-        int previousSelectedWeapon = selectedWeapon;
-        for(int i=0;i<keys.Length;i++)
+        int previousSelectedWeapon = _selectedWeaponId;
+        for(int i=0;i<_keys.Length;i++)
         {
-            if (Input.GetKeyDown(keys[i]) && timeSinceLastSwitch>= switchTime)
-                selectedWeapon= i;
+            if (Input.GetKeyDown(_keys[i]) && timeSinceLastSwitch>= _switchTime)
+                _selectedWeaponId= i;
         }
-        if(previousSelectedWeapon!=selectedWeapon)
+        if(previousSelectedWeapon!=_selectedWeaponId)
         {
-            Select(selectedWeapon);
+            Select(_selectedWeaponId);
         }
         timeSinceLastSwitch += Time.deltaTime;
     }
@@ -50,16 +47,8 @@ public class WeaponSwitching : MonoBehaviour
         for (int i=0; i< weapons.Length; i++)
         {
             weapons[i].gameObject.SetActive(i == weaponIndex);
-            
-
         }
         timeSinceLastSwitch= 0f;
 
-        //OnWeaponSelected();
-
     }
-    /*private void OnWeaponSelected()
-    {
-        
-    }*/
 }

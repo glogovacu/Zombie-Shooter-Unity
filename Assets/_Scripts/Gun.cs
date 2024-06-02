@@ -12,9 +12,6 @@ public class Gun : MonoBehaviour
     {
         //dinamicji nalazi playera
         player = GameObject.Find("PlayerCapsule");
-
-
-
     }
     private void Update()
     {
