@@ -5,34 +5,27 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour {
-    [SerializeField] private GameObject _bullet;
+    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnTransform;
-    [SerializeField] private float _shootingForce = 20f;
+    [SerializeField] private float _bulletSpeed = 20f;
 
     public static EventHandler OnPlayerShoot;
     public void OnFire(InputAction.CallbackContext context) {
-        // Perform a raycast from the camera to the center of the screen
-        Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-
-        // Determine the target point
         Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+
+        // Cast a ray from the center of the camera
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity)) {
             targetPoint = hit.point;
         } else {
-            // If the raycast does not hit anything, use a far away point
-            targetPoint = transform.position + transform.forward * 1000f;
+            targetPoint = Camera.main.transform.position + Camera.main.transform.forward * 1000f; // Some large value
         }
 
-        // Calculate the direction to the target point
-        Vector3 direction = (targetPoint - _bulletSpawnTransform.position).normalized;
-
-        // Instantiate the projectile at the shooting point
-        GameObject projectile = Instantiate(_bullet, _bulletSpawnTransform.position, Quaternion.LookRotation(direction));
-
-        // Get the Rigidbody component of the projectile and apply force
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.AddForce(direction * _shootingForce, ForceMode.Impulse);
-        OnPlayerShoot?.Invoke(this, EventArgs.Empty);
+        // Instantiate the bullet at the spawn point
+        GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null) {
+            bulletScript.Initialize(targetPoint);
+        }
     }
 }
