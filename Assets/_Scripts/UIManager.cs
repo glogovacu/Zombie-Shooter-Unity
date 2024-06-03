@@ -92,21 +92,8 @@ public class UIManager : MonoBehaviour
     {
         if (credit > 20)
         {
-            healthBar.maxHealth = healthBar.maxHealth + 20;
-            HealthUpgradeText.text = "Max HP: " + healthBar.maxHealth.ToString();
-            DecreaseCredit(20);
-        }
-        else
-        {
-            ErrorText.text = "Nemate dovoljno kredita";
-        }
-    }
-    public void IncreaseHealthRegen()
-    {
-        if (credit > 20)
-        {
-            healthBar.increaseHealth = healthBar.increaseHealth + healtModifier;
-            HealthRegText.text = "Regen HP: " + healthBar.increaseHealth.ToString();
+            healthBar.MaxHealth = healthBar.MaxHealth + 20;
+            HealthUpgradeText.text = "Max HP: " + healthBar.MaxHealth.ToString();
             DecreaseCredit(20);
         }
         else

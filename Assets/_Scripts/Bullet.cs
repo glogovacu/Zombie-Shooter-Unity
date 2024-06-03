@@ -21,10 +21,11 @@ public class Bullet : MonoBehaviour
             Instantiate(_hitEffect, collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].normal));
         }
 
-        // Apply damage to the target if it has a Target component
-        Target target = collision.transform.GetComponent<Target>();
-        if (target != null) {
-            // target.TakeDamage(_damage);
+        if (collision.gameObject.TryGetComponent<HealthBar>(out var health)) {
+            health.DecreaseHealth(_damage);
+            Debug.Log(collision.gameObject.name);
+        } else {
+            Debug.Log("No Health Attached");
         }
 
         // Destroy the bullet after collision

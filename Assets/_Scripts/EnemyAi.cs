@@ -129,7 +129,7 @@ public class EnemyAi : MonoBehaviour
             //ovde pisemo kod sta se desi kad nas napadne
             mAnimator.SetTrigger("Attack");
             //smanjuje se hp
-            healthBar.DecreaseHealth();
+            healthBar.DecreaseHealth(20f);
             int randomIndex = Random.Range(0, attackSources.Length);
             AudioClip randomClip = attackSources[randomIndex];
             audioSource.clip = randomClip;
