@@ -427,6 +427,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 745496459517617421, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
+      propertyPath: GunData
+      value: 
+      objectReference: {fileID: 11400000, guid: cfd115f9e233c054fb9cd119afccbe0f, type: 2}
     - target: {fileID: 3433111451865344002, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
       propertyPath: m_Name
       value: Ak47

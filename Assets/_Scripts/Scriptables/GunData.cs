@@ -7,16 +7,16 @@ using UnityEngine;
 public class GunData : ScriptableObject
 {
     [Header("Info")]
-    public new string name;
+    public string Name;
     [Header("Pucanje")]
-    public float damage;
-    public float maxDistance;
+    public float Damage;
+    public float MaxDistance;
     [Header("Municija")]
-    public int currentAmmo;
-    public int magSize;
-    public float fireRate;
-    public float reloadTime;
+    public int CurrentAmmo;
+    public int MagSize;
+    public float FireRate;
+    public float ReloadTime;
     [HideInInspector]
-    public bool reloading;
+    public bool Reloading;
     
 }

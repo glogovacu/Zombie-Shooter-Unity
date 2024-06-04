@@ -53,8 +53,8 @@ public class UIManager : MonoBehaviour
     {
         if(credit > 20)
         { 
-            gun.gunData.damage = gun.gunData.damage + damageModifier;
-            DamageText.text = "Damage: " + gun.gunData.damage.ToString();
+            gun.GunData.Damage = gun.GunData.Damage + damageModifier;
+            DamageText.text = "Damage: " + gun.GunData.Damage.ToString();
             DecreaseCredit(20);
         }
         else
@@ -68,8 +68,8 @@ public class UIManager : MonoBehaviour
     {
         if (credit > 20)
         {
-            gun.gunData.magSize = gun.gunData.magSize + magSizeModifier;
-            MagSizeText.text = "Mag Size: " + gun.gunData.magSize.ToString();
+            gun.GunData.MagSize = gun.GunData.MagSize + magSizeModifier;
+            MagSizeText.text = "Mag Size: " + gun.GunData.MagSize.ToString();
             DecreaseCredit(20);
         }
         else

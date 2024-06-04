@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 586563137}
   - component: {fileID: 586563138}
   m_Layer: 6
-  m_Name: PlayerSwitching
+  m_Name: PlayerWeaponSwitching
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2260,10 +2260,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032a62a00732721468ea2cddef815650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  Weapons: []
+  SelectedWeaponId: 0
   _keys: 3100000032000000
-  _switchTime: 0
-  _selectedWeaponId: 0
+  _switchTime: 0.2
 --- !u!1 &613751815
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,6 +4025,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 7425516166194610427, guid: 6f1082af0317af74d890015a284b5ffb, type: 3}
   _bulletSpawnTransform: {fileID: 1001516432}
   _bulletSpeed: 20
+  _weaponSwitching: {fileID: 586563138}
 --- !u!114 &1131999653
 MonoBehaviour:
   m_ObjectHideFlags: 0

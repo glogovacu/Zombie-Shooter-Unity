@@ -1,43 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
-{
-    //povezujem gundata sa njim 
-    [SerializeField] public GunData gunData;
-    public float timeSinceLastShot;
-    public GameObject player;
-    private void Start()
-    {
-        //dinamicji nalazi playera
-        player = GameObject.Find("PlayerCapsule");
+public class Gun : MonoBehaviour {
+    public GunData GunData;
+    
+    private int _currentAmmo;
+
+    private void Start() {
+        _currentAmmo = GunData.MagSize;
+        PlayerShooting.Instance.OnPlayerShoot += PlayerShooting_OnPlayerShoot;
     }
-    private void Update()
-    {
-        timeSinceLastShot += Time.deltaTime;
+
+    private void PlayerShooting_OnPlayerShoot(object sender, EventArgs e) {
+        if (_currentAmmo == 0) {
+            StartReload();
+            return;
+        }
+        _currentAmmo--;
     }
-    //ne mogu da se setim staje ovo xd
-    private void OnDisable() => gunData.reloading = false;
-    //Krece reload
-    public void StartReload()
-    {
-        if (!gunData.reloading && this.gameObject.activeSelf)
-        {
-            //ovo je kao delaj
+
+    public void StartReload() {
+        if (!GunData.Reloading && this.gameObject.activeSelf) {
             StartCoroutine(Reload());
-            
         }
     }
-    //loika za delay
     private IEnumerator Reload()
     {
-        gunData.reloading = true;
-        yield return new WaitForSeconds(gunData.reloadTime);
-        gunData.currentAmmo = gunData.magSize;
-        gunData.reloading = false;
+        GunData.Reloading = true;
+        yield return new WaitForSeconds(GunData.ReloadTime);
+        GunData.CurrentAmmo = GunData.MagSize;
+        GunData.Reloading = false;
     }
-    // 600rpm/60s = 10rps 1s/10rps = 0.1s (Time since last shot) i pita da li je tab ukljucen
-    public bool CanShoot() => !gunData.reloading && timeSinceLastShot > 1f / (gunData.fireRate / 60f);
+
+
+    private void OnDisable() => GunData.Reloading = false;
 
 }

@@ -10,9 +10,9 @@ public class ResetGlock : MonoBehaviour
     void Start()
     {
         gun = GetComponent<Gun>();
-        gun.gunData.damage = 12;
-        gun.gunData.magSize = 18;
-        gun.gunData.currentAmmo = 18;
+        gun.GunData.Damage = 12;
+        gun.GunData.MagSize = 18;
+        gun.GunData.CurrentAmmo = 18;
     }
 
     // Update is called once per frame

@@ -2,53 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSwitching : MonoBehaviour
-{
+public class WeaponSwitching : MonoBehaviour {
     //menjanje weapona logika
-    [SerializeField] public Transform[] weapons;
+
+    public Gun[] Weapons;
+    public int SelectedWeaponId = 0;
+
     [SerializeField] private KeyCode[] _keys;
-    [SerializeField] private float _switchTime;
-    [SerializeField] private int _selectedWeaponId = 0;
-    private float timeSinceLastSwitch = 0f;
-    private void Start()
-    {
+    [SerializeField] private float _switchTime = 0.2f;
+    
+    private float _timeSinceLastSwitch = 0f;
+    private void Start() {
         //postavlja koliko weapona imamo
         SetWeapons();
-        Select(_selectedWeaponId);
-        timeSinceLastSwitch = 0f;
+        Select(SelectedWeaponId);
+        _timeSinceLastSwitch = 0f;
 
     }
-    private void SetWeapons()
-    {
-        weapons = new Transform[transform.childCount];
+    private void SetWeapons() {
+        Weapons = new Gun[transform.childCount];
         for(int i = 0; i < transform.childCount; i++)
         {
-            weapons[i] = transform.GetChild(i);
+            Weapons[i] = transform.GetChild(i).GetComponent<Gun>();
 
         }
-        if(_keys== null) _keys = new KeyCode[weapons.Length];
+        if(_keys== null) _keys = new KeyCode[Weapons.Length];
     }
-    private void Update()
-    {
-        int previousSelectedWeapon = _selectedWeaponId;
+    private void Update() {
+        int previousSelectedWeapon = SelectedWeaponId;
         for(int i=0;i<_keys.Length;i++)
         {
-            if (Input.GetKeyDown(_keys[i]) && timeSinceLastSwitch>= _switchTime)
-                _selectedWeaponId= i;
+            if (Input.GetKeyDown(_keys[i]) && _timeSinceLastSwitch>= _switchTime)
+                SelectedWeaponId= i;
         }
-        if(previousSelectedWeapon!=_selectedWeaponId)
+        if(previousSelectedWeapon!=SelectedWeaponId)
         {
-            Select(_selectedWeaponId);
+            Select(SelectedWeaponId);
         }
-        timeSinceLastSwitch += Time.deltaTime;
+        _timeSinceLastSwitch += Time.deltaTime;
     }
-    private void Select(int weaponIndex)
-    {
-        for (int i=0; i< weapons.Length; i++)
+    private void Select(int weaponIndex) {
+        for (int i=0; i< Weapons.Length; i++)
         {
-            weapons[i].gameObject.SetActive(i == weaponIndex);
+            Weapons[i].gameObject.SetActive(i == weaponIndex);
         }
-        timeSinceLastSwitch= 0f;
+        _timeSinceLastSwitch= 0f;
 
+    }
+
+    public GunData GetGunData() {
+        return Weapons[SelectedWeaponId].GunData;
     }
 }

@@ -4,13 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerShooting : MonoBehaviour {
+public class PlayerShooting : StaticInstance<PlayerShooting> { 
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnTransform;
     [SerializeField] private float _bulletSpeed = 20f;
+    [SerializeField] private WeaponSwitching _weaponSwitching;
 
-    public static EventHandler OnPlayerShoot;
+    public EventHandler OnPlayerShoot;
+    private float _timeSinceLastShot;
+    private void Update() {
+        _timeSinceLastShot += Time.deltaTime;
+    }
     public void OnFire(InputAction.CallbackContext context) {
+        if (!CanShoot() || !context.control.IsPressed()) {
+            return;
+        }
         RaycastHit hit;
         Vector3 targetPoint;
 
@@ -25,7 +33,10 @@ public class PlayerShooting : MonoBehaviour {
         GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null) {
-            bulletScript.Initialize(targetPoint);
+            bulletScript.Initialize(targetPoint, _weaponSwitching.GetGunData().Damage);
         }
     }
+
+    // 600rpm/60s = 10rps 1s/10rps = 0.1s (Time since last shot) i pita da li je tab ukljucen
+    private bool CanShoot() => !_weaponSwitching.GetGunData().Reloading && _timeSinceLastShot > 1f / (_weaponSwitching.GetGunData().FireRate / 60f);
 }

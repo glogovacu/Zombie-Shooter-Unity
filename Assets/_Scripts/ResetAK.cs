@@ -11,9 +11,9 @@ public class ResetAK : MonoBehaviour
     void Start()
     {
         gun= GetComponent<Gun>();
-        gun.gunData.damage = 22;
-        gun.gunData.magSize = 30;
-        gun.gunData.currentAmmo = 30;
+        gun.GunData.Damage = 22;
+        gun.GunData.MagSize = 30;
+        gun.GunData.CurrentAmmo = 30;
     }
 
     // Update is called once per frame
