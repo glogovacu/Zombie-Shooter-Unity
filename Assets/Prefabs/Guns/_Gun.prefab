@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7329005141412692214}
   - component: {fileID: 745496459517617421}
+  - component: {fileID: -6679608481870996870}
   m_Layer: 0
   m_Name: _Gun
   m_TagString: Untagged
@@ -47,3 +48,17 @@ MonoBehaviour:
   gunData: {fileID: 0}
   timeSinceLastShot: 0
   player: {fileID: 0}
+--- !u!114 &-6679608481870996870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433111451865344002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e43139df2f378a48ab513592db0eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 4
+  multiplier: -60

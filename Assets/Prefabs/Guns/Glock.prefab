@@ -79,16 +79,28 @@ PrefabInstance:
       value: Glock
       objectReference: {fileID: 0}
     - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.726
       objectReference: {fileID: 0}
     - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.293
       objectReference: {fileID: 0}
     - target: {fileID: 7329005141412692214, guid: 6dc3fffc52169d24daa770f6f600c31d, type: 3}
       propertyPath: m_LocalRotation.w
