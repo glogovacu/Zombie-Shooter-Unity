@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 453469869322868436}
   - component: {fileID: 5955993674036262915}
   - component: {fileID: 7426721498617301594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1318335298752049181}
   - component: {fileID: 3647231415538885081}
   - component: {fileID: -774750049268566798}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pfBulletProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,6 +179,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1400
-  _damage: 10
   _hitEffect: {fileID: 0}
   _rb: {fileID: 3647231415538885081}

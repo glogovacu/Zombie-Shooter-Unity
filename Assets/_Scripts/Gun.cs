@@ -14,11 +14,16 @@ public class Gun : MonoBehaviour {
     }
 
     private void PlayerShooting_OnPlayerShoot(object sender, EventArgs e) {
+        if (!this.gameObject.activeSelf) {
+            return;
+        }
         if (_currentAmmo == 0) {
             StartReload();
             return;
         }
+        
         _currentAmmo--;
+        Debug.Log(_currentAmmo);
     }
 
     public void StartReload() {
@@ -30,7 +35,7 @@ public class Gun : MonoBehaviour {
     {
         GunData.Reloading = true;
         yield return new WaitForSeconds(GunData.ReloadTime);
-        GunData.CurrentAmmo = GunData.MagSize;
+        _currentAmmo = GunData.MagSize;
         GunData.Reloading = false;
     }
 
