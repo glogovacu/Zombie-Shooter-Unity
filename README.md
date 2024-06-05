@@ -7,4 +7,3 @@ Made with Unity. Adding features one by one to showcase my skills in modular and
 - Animation
 - Difficulty
 - Bullet Trail
-- Shake
