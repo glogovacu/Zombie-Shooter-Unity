@@ -3,7 +3,6 @@ Made with Unity. Adding features one by one to showcase my skills in modular and
 ## Core Gameplay To Do
 - Zombie Spawner
 - Talent System
-- Reload
 - Zombie AI
 - Animation
 - Difficulty
