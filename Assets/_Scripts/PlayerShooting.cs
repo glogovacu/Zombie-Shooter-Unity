@@ -18,7 +18,7 @@ public class PlayerShooting : StaticInstance<PlayerShooting> {
         if (_isFiring && CanShoot()) {
             Shoot();
         }
-
+     
     }
     public void OnFire(InputAction.CallbackContext context) {
         if (context.performed) {
