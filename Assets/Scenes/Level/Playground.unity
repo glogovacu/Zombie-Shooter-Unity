@@ -589,7 +589,6 @@ MonoBehaviour:
   healtModifier: 1
   magSizeModifier: 0
   upgradeCanvas: {fileID: 0}
-  target: {fileID: 3658066159775931520, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
   healthBar: {fileID: 0}
 --- !u!1 &251912107
 GameObject:
@@ -3838,6 +3837,7 @@ GameObject:
   - component: {fileID: 1131999653}
   - component: {fileID: 1131999654}
   - component: {fileID: 1131999655}
+  - component: {fileID: 1131999656}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -4129,6 +4129,19 @@ MonoBehaviour:
     DissipationDistance: 100
     PropagationSpeed: 343
   DefaultVelocity: {x: 0.1, y: 0.04, z: 0.2}
+--- !u!114 &1131999656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131999644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed69ea8005978d14c8dfffd4f3adfd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CinemachineImpulseSource: {fileID: 1131999655}
 --- !u!1 &1133966166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4294,6 +4307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214510989}
   - component: {fileID: 1214510988}
+  - component: {fileID: 1214510990}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -4328,6 +4342,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214510990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214510987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9e04bf3c112dd428ad1694355bc391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1239491567
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
     public float healtModifier = 1;
     public int magSizeModifier = 1;
     public GameObject upgradeCanvas;
-    public Target target;
     public HealthBar healthBar;
 
     //ovo je funkciaj u updejtu koja updejtuje nesto konstanto da bi se videlo
@@ -108,14 +107,5 @@ public class UIManager : MonoBehaviour
         magSizeModifier = 1;
         credit= 0;
         score = 0;
-    }
-    private void Update()
-    {
-        //kad imamo vise od 2000 scora zombiji su jaci duplo
-        if(score > 2000)
-        {
-            target.health = 200f;
-        }    
-        UpdateAmmo();
     }
 }
