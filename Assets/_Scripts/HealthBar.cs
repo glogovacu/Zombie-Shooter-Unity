@@ -18,6 +18,10 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    public void IncreaseHealth(float amount) {
+        Health = Mathf.Min(Health + amount, MaxHealth);
+    }
+
     private void Die() {
         OnDeath?.Invoke(this, EventArgs.Empty);
         Destroy(gameObject);

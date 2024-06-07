@@ -45,7 +45,7 @@ public class PlayerShooting : StaticInstance<PlayerShooting> {
         GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null) {
-            bulletScript.Initialize(targetPoint, _weaponSwitching.GetGunData().Damage);
+            bulletScript.Initialize(targetPoint, _weaponSwitching.GetGunData().Damage + _weaponSwitching.GetGunData().Damage * UpgradeSystem.Instance.DamageModifier);
         }
         _timeSinceLastShot = 0f;
     }
