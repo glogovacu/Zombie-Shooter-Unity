@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UpgradeSystemUI : MonoBehaviour {
 
     [SerializeField] private List<Button> _buttons;
     [SerializeField] private List<Upgrade> _upgrades;
+
+    [SerializeField] private Canvas _upgradeCanvas; 
 
     private void Start() {
         for (int i = 0; i < _buttons.Count; i++) {
@@ -32,4 +35,17 @@ public class UpgradeSystemUI : MonoBehaviour {
         var textMeshPro = button.GetComponentInChildren<TextMeshProUGUI>();
         textMeshPro.text = (int.Parse(textMeshPro.text) + 1).ToString();
     }
+
+    public void OnTab(InputAction.CallbackContext context) {
+        if (context.performed) {
+            _upgradeCanvas.enabled = true;
+            Cursor.lockState = CursorLockMode.None; 
+            Cursor.visible = true; 
+        } else if (context.canceled) {
+            _upgradeCanvas.enabled = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
 }

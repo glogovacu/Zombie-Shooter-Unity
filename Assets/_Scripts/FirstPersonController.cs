@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class FirstPersonController : MonoBehaviour {
 
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _speed = 3f;
 
     [SerializeField] private Transform _cameraTransform;
 
@@ -32,7 +32,7 @@ public class FirstPersonController : MonoBehaviour {
         // Move the player based on input and camera's forward and right directions
         Vector3 move = _cameraTransform.forward * _moveInput.y + _cameraTransform.right * _moveInput.x;
         move.y = 0; // Ensure the player does not move vertically
-        _rb.AddForce(move.normalized * _speed, ForceMode.VelocityChange);
+        _rb.AddForce(move.normalized * (_speed + 1f * UpgradeSystem.Instance.SpeedModifier), ForceMode.VelocityChange);
     }
 
     public void OnMove(InputAction.CallbackContext context) {

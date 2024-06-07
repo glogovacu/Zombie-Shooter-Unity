@@ -7,10 +7,17 @@ public class Gun : MonoBehaviour {
     public GunData GunData;
     
     private int _currentAmmo;
+    private int _magSize;
 
     private void Start() {
+        _magSize = GunData.MagSize;
         _currentAmmo = GunData.MagSize;
         PlayerShooting.Instance.OnPlayerShoot += PlayerShooting_OnPlayerShoot;
+        UpgradeSystem.Instance.OnMagIncrease += UpgradeSystem_OnMagIncrease;
+    }
+
+    private void UpgradeSystem_OnMagIncrease(object sender, EventArgs e) {
+        _magSize += 5 * UpgradeSystem.Instance.MagSizeModifier;
     }
 
     private void PlayerShooting_OnPlayerShoot(object sender, EventArgs e) {
@@ -35,7 +42,7 @@ public class Gun : MonoBehaviour {
     {
         GunData.Reloading = true;
         yield return new WaitForSeconds(GunData.ReloadTime);
-        _currentAmmo = GunData.MagSize;
+        _currentAmmo = _magSize;
         GunData.Reloading = false;
     }
 

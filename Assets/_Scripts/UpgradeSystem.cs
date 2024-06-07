@@ -1,3 +1,5 @@
+using System;
+
 public class UpgradeSystem : StaticInstance<UpgradeSystem> {
 
     public float DamageModifier = 0;
@@ -8,8 +10,13 @@ public class UpgradeSystem : StaticInstance<UpgradeSystem> {
 
     private float _credit;
 
+    public EventHandler OnHealthIncrease;
+    public EventHandler OnMagIncrease;
+    public EventHandler OnCreditChanged;
+
     public void AddCredit(float credit) {
         _credit += credit;
+        OnCreditChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public bool TryDecreaseCredit(float amount) {
@@ -17,6 +24,7 @@ public class UpgradeSystem : StaticInstance<UpgradeSystem> {
             return false;
         }
         _credit -= amount;
+        OnCreditChanged?.Invoke(this, EventArgs.Empty);
         return true;
     }
 
@@ -29,6 +37,7 @@ public class UpgradeSystem : StaticInstance<UpgradeSystem> {
                     break;
                 case UpgradeType.Health:
                     HealthModifier++;
+                    OnHealthIncrease?.Invoke(this, EventArgs.Empty);
                     break;
                 case UpgradeType.Speed:
                     SpeedModifier++;
@@ -38,6 +47,7 @@ public class UpgradeSystem : StaticInstance<UpgradeSystem> {
                     break;
                 case UpgradeType.MagSize:
                     MagSizeModifier++;
+                    OnMagIncrease?.Invoke(this, EventArgs.Empty);
                     break;
             }
         }
@@ -63,6 +73,10 @@ public class UpgradeSystem : StaticInstance<UpgradeSystem> {
             default:
                 return 0;
         }
+    }
+
+    public float GetCredit() {
+        return _credit;
     }
 }
 [System.Serializable]
