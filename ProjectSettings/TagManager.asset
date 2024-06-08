@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Music
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
