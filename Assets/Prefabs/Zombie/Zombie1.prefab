@@ -1724,6 +1724,8 @@ GameObject:
   - component: {fileID: -1027979630994260583}
   - component: {fileID: 7655473916567239336}
   - component: {fileID: 6126915774099826557}
+  - component: {fileID: 8260580309318711485}
+  - component: {fileID: 799924672119598771}
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Untagged
@@ -1832,6 +1834,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _creditToDrop: 100
+--- !u!195 &8260580309318711485
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &799924672119598771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cbd473fab6add4097cec3c26671189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 8260580309318711485}
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _walkPointRange: 0
+  _timeBetweenAttacks: 0
+  _sightRange: 0
+  _attackRange: 0
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0
