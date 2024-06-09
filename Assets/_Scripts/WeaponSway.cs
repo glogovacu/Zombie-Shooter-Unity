@@ -5,20 +5,27 @@ using UnityEngine.InputSystem;
 
 public class WeaponSway : MonoBehaviour
 {
-    //Pomeraje puske kad pomeras misa
-    [Header("Sway Settings")]
-    [SerializeField] private float smooth;
-    [SerializeField] private float multiplier;
-    private void Update()
-    { 
-     // get mouse input
-    float mouseX = Input.GetAxisRaw("Mouse X") * multiplier;
-    float mouseY = Input.GetAxisRaw("Mouse Y") * multiplier;
-    // calculate target rotation
-    Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
-    Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
-    Quaternion targetRotation = rotationX * rotationY;
-    // rotate
-    transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth* Time.deltaTime);
+    [SerializeField] private float _intensity = 1.0f;
+    [SerializeField] private float _smooth = 3.0f;
+
+    private Quaternion _originRotation;
+
+    void Start() {
+        _originRotation = transform.localRotation;
+    }
+
+    void Update() {
+        UpdateSway();
+    }
+
+    private void UpdateSway() {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+        Quaternion xAdj = Quaternion.AngleAxis(-_intensity * mouseX, Vector3.up);
+        Quaternion yAdj = Quaternion.AngleAxis(_intensity * mouseY, Vector3.right);
+        Quaternion targetRotation = _originRotation * xAdj * yAdj;
+
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * _smooth);
     }
 }
