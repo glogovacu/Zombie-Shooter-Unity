@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
-public class EnemyAi : MonoBehaviour
-{
+public class EnemyAi : MonoBehaviour {
+
+    public EventHandler OnAttack;
     [SerializeField] private NavMeshAgent agent;
 
     [SerializeField] private LayerMask _whatIsGround, _whatIsPlayer;
@@ -16,8 +18,10 @@ public class EnemyAi : MonoBehaviour
 
     private Transform _playerTransform;
     private Vector3 _walkPoint;
+    private float _rotationSpeed = 5f;
     private bool _walkPointSet;
     private bool _alreadyAttacked;
+    
 
     private void Start() {
         _playerTransform = PlayerSingleton.Instance.PlayerTransform;
@@ -26,9 +30,7 @@ public class EnemyAi : MonoBehaviour
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
         _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
         if (!_playerInSightRange && !_playerInAttackRange) Patrolling();
-        //ako je jedno u sight onda krece da ga juri
         if (_playerInSightRange && !_playerInAttackRange) ChasePlayer();
-        //ako je oba onda ga udara
         if (_playerInSightRange && _playerInAttackRange) AttackPlayer();
     }
     private void Patrolling() {
@@ -36,7 +38,7 @@ public class EnemyAi : MonoBehaviour
             SearchWalkPoint();
         }
         if (_walkPointSet) {
-            agent.SetDestination(_walkPoint);
+            SetDestination(_walkPoint);
         }
         Vector3 distanceTowalkPoint = transform.position - _walkPoint;
         if (distanceTowalkPoint.magnitude < 1f) {
@@ -46,28 +48,41 @@ public class EnemyAi : MonoBehaviour
     }
     private void SearchWalkPoint() {
         //stavlja random mesto na mapi
-        float randomZ = Random.Range(-_walkPointRange, _walkPointRange);
-        float randomX = Random.Range(-_walkPointRange, _walkPointRange);
+        float randomZ = UnityEngine.Random.Range(-_walkPointRange, _walkPointRange);
+        float randomX = UnityEngine.Random.Range(-_walkPointRange, _walkPointRange);
         _walkPoint = new Vector3(transform.position.x + randomX,transform.position.y, transform.position.z + randomZ);
         if(Physics.Raycast(_walkPoint, -transform.up, 2f,_whatIsGround)) {
             _walkPointSet = true;
         }
     }
     private void ChasePlayer() {
-        agent.SetDestination(_playerTransform.position);
+        SetDestination(_playerTransform.position);
     }
     private void AttackPlayer() {
         agent.SetDestination(transform.position);
-        transform.LookAt(_playerTransform);
-        //stavljamo cooldown na napade
+        RotateTowardsLocation(_playerTransform.position);
         if (!_alreadyAttacked) {
+            OnAttack?.Invoke(this, EventArgs.Empty);
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _timeBetweenAttacks);
         }
     }
     private void ResetAttack() {
-        //resetuje attack
         _alreadyAttacked= false;
+    }
+
+    private void SetDestination(Vector3 position) {
+        agent.SetDestination(position);
+        RotateTowardsLocation(position);
+    }
+
+    private void RotateTowardsLocation(Vector3 position) {
+        // Determine the direction to the player
+        Vector3 direction = position - transform.position;
+        // Calculate the rotation needed to look at the player
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        // Smoothly rotate towards the player
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
     }
 
 }

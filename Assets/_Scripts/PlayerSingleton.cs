@@ -6,7 +6,8 @@ public class PlayerSingleton : StaticInstance<PlayerSingleton> {
 
     public Transform PlayerTransform;
 
-    private void Start() {
+    protected override void Awake() {
+        base.Awake();
         PlayerTransform = transform;
     }
 }

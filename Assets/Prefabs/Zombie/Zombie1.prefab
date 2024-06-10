@@ -1875,10 +1875,10 @@ MonoBehaviour:
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  _walkPointRange: 0
-  _timeBetweenAttacks: 0
-  _sightRange: 0
-  _attackRange: 0
+  _walkPointRange: 1
+  _timeBetweenAttacks: 1
+  _sightRange: 10
+  _attackRange: 1.2
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0
