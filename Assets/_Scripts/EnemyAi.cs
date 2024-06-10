@@ -4,6 +4,9 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour {
 
     public EventHandler OnAttack;
+    public EventHandler OnChase;
+    public EventHandler OnPatroll;
+
     [SerializeField] private NavMeshAgent agent;
 
     [SerializeField] private LayerMask _whatIsGround, _whatIsPlayer;
@@ -47,10 +50,9 @@ public class EnemyAi : MonoBehaviour {
 
     }
     private void SearchWalkPoint() {
-        //stavlja random mesto na mapi
         float randomZ = UnityEngine.Random.Range(-_walkPointRange, _walkPointRange);
         float randomX = UnityEngine.Random.Range(-_walkPointRange, _walkPointRange);
-        _walkPoint = new Vector3(transform.position.x + randomX,transform.position.y, transform.position.z + randomZ);
+        _walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         if(Physics.Raycast(_walkPoint, -transform.up, 2f,_whatIsGround)) {
             _walkPointSet = true;
         }

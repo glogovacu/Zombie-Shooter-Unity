@@ -1318,6 +1318,24 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &508205434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+  m_PrefabInstance: {fileID: 6950082095117050902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &508205442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508205434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b74e23c6ce94a84fb18d6218bf7fbbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDamage: 20
 --- !u!1001 &540582297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3410,6 +3428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 1131999645}
+  HealthBar: {fileID: 0}
 --- !u!1 &1214510987
 GameObject:
   m_ObjectHideFlags: 0
@@ -7619,8 +7638,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 799924672119598771, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-      propertyPath: _walkPointRange
+      propertyPath: _sightRange
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 799924672119598771, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+      propertyPath: _attackRange
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_Name
@@ -7629,7 +7652,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 508205442}
   m_SourcePrefab: {fileID: 100100000, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
 --- !u!23 &6993327201331967077
 MeshRenderer:
@@ -8077,7 +8103,7 @@ GameObject:
   - component: {fileID: 8345070698254259373}
   - component: {fileID: 8345070698254259374}
   - component: {fileID: 8345070698254259375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
