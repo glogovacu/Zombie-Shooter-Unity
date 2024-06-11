@@ -1318,24 +1318,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &508205434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-  m_PrefabInstance: {fileID: 6950082095117050902}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &508205442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508205434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b74e23c6ce94a84fb18d6218bf7fbbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackDamage: 20
 --- !u!1001 &540582297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3112,11 +3094,11 @@ GameObject:
   - component: {fileID: 1131999650}
   - component: {fileID: 1131999652}
   - component: {fileID: 1131999653}
-  - component: {fileID: 1131999654}
   - component: {fileID: 1131999655}
   - component: {fileID: 1131999656}
   - component: {fileID: 1131999657}
   - component: {fileID: 1131999658}
+  - component: {fileID: 1131999659}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -3313,29 +3295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   MaxHealth: 100
---- !u!136 &1131999654
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131999644}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1131999655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3429,6 +3388,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 1131999645}
   HealthBar: {fileID: 0}
+--- !u!136 &1131999659
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131999644}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1161596643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+  m_PrefabInstance: {fileID: 6950082095117050902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1161596652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161596643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e607c830b6df647964b7d800e0c815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1214510987
 GameObject:
   m_ObjectHideFlags: 0
@@ -7637,14 +7636,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 799924672119598771, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-      propertyPath: _sightRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 799924672119598771, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-      propertyPath: _attackRange
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_Name
       value: Zombie1
@@ -7654,8 +7645,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 508205442}
+      insertIndex: -1
+      addedObject: {fileID: 1161596652}
   m_SourcePrefab: {fileID: 100100000, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
 --- !u!23 &6993327201331967077
 MeshRenderer:

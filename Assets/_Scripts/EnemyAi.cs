@@ -59,6 +59,7 @@ public class EnemyAi : MonoBehaviour {
     }
     private void ChasePlayer() {
         SetDestination(_playerTransform.position);
+        OnChase?.Invoke(this, EventArgs.Empty);
     }
     private void AttackPlayer() {
         agent.SetDestination(transform.position);
