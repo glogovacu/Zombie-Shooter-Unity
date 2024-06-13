@@ -17,10 +17,11 @@ public class ZombieAnimation : MonoBehaviour {
     }
 
     private void EnemyAi_OnChase(object sender, EventArgs e) {
-        _animator.CrossFade("Chase", 0.2f);
+        //_animator.CrossFade("Chase", 0.2f);
+        _animator.SetBool("isChasing", true);
     }
 
     private void EnemyAi_OnAttack(object sender, EventArgs e) {
-        _animator.CrossFade("Attack", 0.2f);
+        //_animator.CrossFade("Attack", 0.2f);
     }
 }
